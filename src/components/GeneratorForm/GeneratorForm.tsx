@@ -1,3 +1,4 @@
+import InputNumber from 'components/InputNumber/InputNumber';
 import { StateContext } from 'context/State/State';
 import { IControl } from 'context/types';
 import React from 'react';
@@ -6,7 +7,7 @@ import { containProperties } from 'utils/utils';
 import InputComponent from '../InputComponent/InputComponent';
 
 const GeneratorForm = () => {
-    const {config, controls} = useContext(StateContext);
+    const { config, controls } = useContext(StateContext);
 
     const createComponent = (control: IControl) => {
         let component;
@@ -17,14 +18,23 @@ const GeneratorForm = () => {
             console.error(`Одно из css-свойств нераспознанно`);
         }
         switch (control.modelName) {
-            case 'InputComponent': component = <InputComponent 
-                key={control.id} 
-                label={control.label} 
+            case 'InputComponent': component = <InputComponent
+                key={control.id}
+                label={control.label}
                 placeholder={control.placeholder}
                 style={control.style}
                 require={control.require}
             />;
-            break;
+                break;
+            case 'InputNumber': component = <InputNumber
+                key={control.id}
+                label={control.label}
+                placeholder={control.placeholder}
+                style={control.style}
+                require={control.require}
+                tooltip={control.tooltip}
+            />;
+                break;
 
         }
         return component;

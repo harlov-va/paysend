@@ -58,8 +58,13 @@ export interface IControl {
         id: number;
         name: string;
         label: string;
-        placeholder: string;
+        placeholder?: string;
         modelName: string;
         style: { [key: string]: string | number | undefined };
         require: boolean;
+        tooltip?: string;
+}
+
+export interface IComponentProps extends IControl {
+        className: string;
 }

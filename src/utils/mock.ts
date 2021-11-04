@@ -17,6 +17,44 @@ export const mockControls = [
         modelName: 'InputComponent',
         require: true,
         style: {
+            '&.input-component': {
+                marginBottom: '20px',
+            },
+            '& .input-component__input': {
+                border: '1px solid #dedede',
+            }
+        }
+    },
+    {
+        id: 2,
+        name: 'input',
+        label: 'Возраст',
+        modelName: 'InputNumber',
+        require: true,
+        tooltip: 'Введите ваш возраст',
+        style: {
+            marginBottom: '20px',
+            '& input': {
+                width: '50px',
+                border: '1px solid #dedede',
+                borderRadius: '5px',
+                padding: '5px 15px 5px 15px',
+            },
+            '& .input-number__plus': {
+                cursor: 'pointer',
+            },
+            '& .input-number__minus': {
+                cursor: 'pointer',
+            }
+        }
+    },
+    {
+        id: 3,
+        name: 'input',
+        label: 'Имя',
+        modelName: 'InputComponent',
+        require: true,
+        style: {
             backgroundColor: 'white',
             '& .input-component__input': {
                 border: '1px solid #dedede',
