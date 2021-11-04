@@ -1,0 +1,13 @@
+
+.button-primary {
+    display: flex;
+    font-family: 'SFProText';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 32px;
+    color: #EEBB50;
+    text-transform: none;
+    &__svg {
+        margin-right: 8px;
+    }
+  }

@@ -1,0 +1,14 @@
+.input-price {
+    &__input {
+        display: flex;
+        width: 295px;
+        margin-right: 16px;
+        background: #303243;
+        border-radius: 8px; 
+    }
+
+    &__text-field {
+        font-family: SFProRounded;
+        color: #FFFFFF;
+    }
+}
