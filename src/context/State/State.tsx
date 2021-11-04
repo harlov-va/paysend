@@ -4,17 +4,8 @@ import {Types, IState, IStateContext, IPayload, } from "../types";
 import {clone, fetchP} from "../../utils/utils";
 
 const initialState: IState = {
-    controls: {
-        input: {
-            value: 0,
-        },
-        slider: {
-            value: 20,
-        },
-    },
-    profits: [],
-    maxProfits: 5,
-    showForm: false,
+    config: undefined,
+    controls: undefined,
 }
 
 export const cloneState: IState = clone(initialState);
@@ -46,6 +37,7 @@ export const State = (props: StateProps) => {
         } finally {
             // finishLoading();
         }
+
         dispatch({
             type: Types.SET_CONFIG,
             payload: {
@@ -55,8 +47,29 @@ export const State = (props: StateProps) => {
     }
 
     // const changeValue = (payload: IPayload) => dispatch({type: Types.CHANGE_VALUE, payload});
+    // получаем массив элементов для создания Анкеты
+    const generateForm = async () => {
+        // setLoading();
+        let ok = false;
+        let response = null;
+        let controls = null;
+        try {
+            response = await fetchP({url: `/storage-api/get-controls`, method: `GET`});
+            ok = response.status === 200;
+            if (ok) controls = await response.json();
+        } catch (e) {
+            console.error(e);
+        } finally {
+            // finishLoading();
+        }
 
-    const generateForm = () => dispatch({type: Types.GENERATE_FORM});
+        dispatch({
+            type: Types.GENERATE_FORM,
+            payload: {
+                controls,
+            },
+        });
+    }
 
     return (
         <StateContext.Provider value={{

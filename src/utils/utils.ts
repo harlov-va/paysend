@@ -1,6 +1,6 @@
-import { IRequestParameters } from "context/types";
+import { IRequestParameters, IResponse } from "context/types";
 import { useEffect, RefObject } from "react";
-import { mockConfig } from "./mock";
+import { mockConfig, mockControls } from "./mock";
 
 export const rnd1000 = () => Math.floor(Math.random() * 1000) + 1;
 
@@ -65,7 +65,7 @@ export function useOnClickOutside<HTMLFormElement>(
     }, [ref, handler])
 }
 
-export function fetchP(payload: IRequestParameters) {
+export function fetchP(payload: IRequestParameters): Promise<any> {
     const {url, method, data} = payload;
     // настоящий fetch
     // return fetch(url, {
@@ -78,5 +78,26 @@ export function fetchP(payload: IRequestParameters) {
     // })
 
     // не настоящий :)
-    return mockConfig;
+    switch (url) {
+        case `/storage-api/get-config`: return new Promise((resolve, reject) => {
+            resolve( {
+                status: 200,
+                json: function () {
+                    return mockConfig;
+                }
+            })      
+        });
+        default: return new Promise((resolve, reject) => {
+            resolve( {
+                status: 200,
+                json: function () {
+                    return mockControls;
+                }
+            })      
+        });
+    }
+}
+
+export function containProperties (arr: string [], target: string []) {
+    return target.every(v => arr.includes(v));
 }

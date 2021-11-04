@@ -1,5 +1,3 @@
-import React from "react";
-
 export enum Types {
         CHANGE_VALUE = 'CHANGE_VALUE',
         ADD_PROFIT = 'ADD_PROFIT',
@@ -10,24 +8,10 @@ export enum Types {
         SET_CONFIG = 'SET_CONFIG',
 }
 
-interface IControl {
-        value: number | number [];
-}
-
-interface IControls {
-        [key: string]: IControl;
-}
-
-export interface IProfit {
-        price: number | number[];
-        procent: number | number[];
-}
-
 export interface IState {
-        controls: IControls;
-        profits: IProfit [];
-        maxProfits: number;
-        showForm: boolean;
+        config?: IConfig;
+        controls?: IControl [];
+
 }
 
 export interface IStateContext extends IState {
@@ -36,14 +20,14 @@ export interface IStateContext extends IState {
 }
 
 export interface IPayload {
-        controlName?: string;
-        value?: number | number [];
-        profit?: IProfit;
         config?: IConfig;
+        controls?: IControl [];
 }
 
 interface IConfig {
-        
+        tags: string [];
+        attributes: string [];
+        css: string [];
 }
 
 export interface ActionType {
@@ -63,4 +47,19 @@ export interface IRequestParameters {
         url: string;
         method?: string;
         data?: {[key: string]: any};
+}
+
+export interface IResponse {
+        status: number;
+        json: () => IConfig | IControl [];
+}
+
+export interface IControl {
+        id: number;
+        name: string;
+        label: string;
+        placeholder: string;
+        modelName: string;
+        style: { [key: string]: string | number | undefined };
+        require: boolean;
 }
