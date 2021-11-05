@@ -1,6 +1,4 @@
 import {Types, IState, ActionType, HandlersType, IPayload} from "../types";
-import {cloneState} from "./State";
-import {clone, isNullUndefined, removeItem} from "../../utils/utils";
 
 const handlers: HandlersType = {
     [Types.SET_CONFIG]: (state: IState, {payload}) => {

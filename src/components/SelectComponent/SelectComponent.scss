@@ -1,0 +1,25 @@
+.select-component {
+    display: flex;
+    align-items: center;
+    width: 600px;
+
+    &__label {
+        width: 20%;
+    }
+    &__star--require {
+        color: red;
+    }
+    &__select {
+        height: 32px;
+        flex-grow: 1;
+        
+        border-radius: 4px;
+        outline: none;
+
+        background: url(data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAJCAQAAACRI2S5AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQflCwULNiB0dL/uAAAAoUlEQVQY023NvUqCAQCF4Ue/DwLvoNkbcRdExSWcxPzZFMIlCJxUHNTBxQRHcVSjWiO6lG7BQRBsyJ9P8Yzvezgn1t4Za7qdgUaQSqqJ+bqhXzybB6mle0+2fq50S8dUKURdoIvehe6bqRKCioSureFBN/QtlDkWKLozsPGKRyMrD/8iPI0WrE382pv6lD3iMPKb8eYdH9JnGC2Q9y0uF0V/skkhsyjnPT4AAAAASUVORK5CYII=) no-repeat right;        
+        
+        background-position-x: calc(100% - 15px);
+        -webkit-appearance: none;
+        -moz-appearance: none;        
+    }
+}

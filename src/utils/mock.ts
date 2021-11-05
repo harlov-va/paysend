@@ -70,8 +70,17 @@ export const mockControls = [
         label: 'Семейное положение',
         modelName: 'SelectComponent',
         require: true,
+        options: ['Не женат/не замужем','Разведен/разведена','Замужем/женат','Состою в гражданском браке'],
         style: {
-           
+            '&.select-component': {                
+                marginBottom: '20px',
+             },
+            '& .select-component__select': {
+                width: '200px',
+                paddingLeft: '15px',
+                border: '1px solid #dedede',
+                flexGrow: 0,
+            }
         }
     },
 ]

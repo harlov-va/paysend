@@ -67,6 +67,7 @@ export interface IControl {
         style: { [key: string]: string | number | undefined };
         require: boolean;
         tooltip?: string;
+        options?: string [];
 }
 
 export interface IComponentProps extends IControl {

@@ -1,11 +1,16 @@
 import H1Component from 'components/H1Component/H1Component';
 import InputNumber from 'components/InputNumber/InputNumber';
+import SelectComponent from 'components/SelectComponent/SelectComponent';
 import { StateContext } from 'context/State/State';
 import { IControl } from 'context/types';
 import React from 'react';
 import { useContext } from 'react';
 import { containProperties } from 'utils/utils';
 import InputComponent from '../InputComponent/InputComponent';
+import block from "bem-cn-lite";
+import './GeneratorForm.scss';
+
+const b = block("generator-form");
 
 const GeneratorForm = () => {
     const { config, controls, changeValue } = useContext(StateContext);
@@ -67,6 +72,7 @@ const GeneratorForm = () => {
                 require={control.require}
                 tooltip={control.tooltip}
                 onChange={(newValue: string) => handleChange(newValue, control)}
+                options={control.options}
             />;
                 break;
         }
@@ -75,11 +81,11 @@ const GeneratorForm = () => {
 
     if (!controls || !controls.length) return null;
     return (
-        <div>
+        <form className={b()}>
             {controls.map((control) => (
                 createComponent(control)
             ))}
-        </div>
+        </form>
     )
 }
 
