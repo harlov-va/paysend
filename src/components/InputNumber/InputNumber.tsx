@@ -42,10 +42,10 @@ const CustomInputNumber = ({className, value, label, placeholder, require, onCha
                 {require && <span className={b('star', { require })}>*</span>}
             </span>            
             <div className={b('input-wrapper')}>
-                <input className={b('input')} min="0" name="quantity" value={value} type="number" onChange={handleChangeInput}/>
+                <input className={b('input')} min="0" value={value} type="number" onChange={handleChangeInput}/>
                 <div className={b('buttons-wrapper')}>
-                    <button className={b('plus')} onClick={handleClickPlus}>▲</button>                
-                    <button className={b('minus',{disabled})} onClick={handleClickMinus}>▼</button>
+                    <button className={b('plus')} onClick={handleClickPlus} type="button">▲</button>                
+                    <button className={b('minus',{disabled})} onClick={handleClickMinus} type="button">▼</button>
                 </div>
             </div>
         </div>
