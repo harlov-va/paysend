@@ -17,11 +17,14 @@ export interface IState {
 export interface IStateContext extends IState {
         generateForm: () => void;
         getConfig: () => void;
+        changeValue: (payload: IPayload) => void;
 }
 
 export interface IPayload {
         config?: IConfig;
         controls?: IControl [];
+        newValue?: string;
+        control?: IControl;
 }
 
 interface IConfig {
@@ -57,6 +60,7 @@ export interface IResponse {
 export interface IControl {
         id: number;
         name: string;
+        value: string;
         label: string;
         placeholder?: string;
         modelName: string;
@@ -67,4 +71,5 @@ export interface IControl {
 
 export interface IComponentProps extends IControl {
         className: string;
+        onChange: (newValue: string) => void;
 }

@@ -15,6 +15,18 @@ const handlers: HandlersType = {
  
         return {...state, controls}
     },
+    [Types.CHANGE_VALUE]: (state: IState, {payload}) => {
+        if (!payload) return state;
+        const {newValue, control} = payload;
+        const {controls} = state;
+        if (!controls) return state;
+        const newControls = [...controls];
+        for (let i = 0; i < newControls.length; i++ ) {
+            if (newControls[i] === control && newValue) newControls[i].value = newValue;
+        }
+ 
+        return {...state, controls: newControls}
+    },
     DEFAULT: (state: IState) => state,
 }
 

@@ -12,14 +12,20 @@ block.setup({
 
 const b = block("input-component");
 
-const CustomInput = ({className, label, placeholder, require}: IComponentProps) => {
+const CustomInput = ({className, value, label, placeholder, require, onChange}: IComponentProps) => {
     return (
         <p className={className + ' ' + b()}>
             <span>
                 {label}
                 {require && <span className={b('star', { require })}>*</span>}
             </span>            
-            <input placeholder={placeholder} className={b('input')}></input>
+            <input 
+                className={b('input')} 
+                value={value} 
+                placeholder={placeholder}
+                onChange={(event) => onChange(event.currentTarget.value)}
+            >                
+            </input>
         </p>
     )
 }

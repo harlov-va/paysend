@@ -14,6 +14,7 @@ export const StateContext = createContext<IStateContext>({
     ...initialState,
     generateForm: () => void 0,
     getConfig: () => void 0,
+    changeValue: (payload) => void 0,
 });
 
 interface StateProps {
@@ -46,7 +47,8 @@ export const State = (props: StateProps) => {
         });
     }
 
-    // const changeValue = (payload: IPayload) => dispatch({type: Types.CHANGE_VALUE, payload});
+    const changeValue = (payload: IPayload) => dispatch({type: Types.CHANGE_VALUE, payload});
+
     // получаем массив элементов для создания Анкеты
     const generateForm = async () => {
         // setLoading();
@@ -73,7 +75,7 @@ export const State = (props: StateProps) => {
 
     return (
         <StateContext.Provider value={{
-                ...state, getConfig, generateForm,
+                ...state, getConfig, generateForm, changeValue
         }}>
             {props.children}
         </StateContext.Provider>

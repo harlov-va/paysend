@@ -13,22 +13,26 @@ block.setup({
 
 const b = block('input-number');
 
-const CustomInputNumber = ({className, label, placeholder, require}: IComponentProps) => {
-    const [value, setValue] = useState(1);
+const CustomInputNumber = ({className, value, label, placeholder, require, onChange}: IComponentProps) => {
     const [disabled, setDisabled] = useState(true);
 
     const handleClickPlus = () => {
-        const newValue = value + 1;
-        if (newValue > 1) setDisabled(false);
-        setValue(newValue);
+        const v = parseInt(value) + 1;
+        if (v > 1) setDisabled(false);
+        onChange(v.toString());
     }
 
     const handleClickMinus = () => {
-        if (value === 1) return;
-        if (value === 2) {
+        if (parseInt(value) === 1) return;
+        if (parseInt(value) === 2) {
             setDisabled(true);            
         };
-        setValue(value - 1);
+        onChange((parseInt(value) - 1).toString());
+    }
+
+    const handleChangeInput = (event: any) => {
+        const newValue = event.currentTarget.value;
+        onChange(newValue);
     }
 
     return (
@@ -38,7 +42,7 @@ const CustomInputNumber = ({className, label, placeholder, require}: IComponentP
                 {require && <span className={b('star', { require })}>*</span>}
             </span>            
             <div className={b('input-wrapper')}>
-                <input className={b('input')} min="0" name="quantity" value={value} type="number"/>
+                <input className={b('input')} min="0" name="quantity" value={value} type="number" onChange={handleChangeInput}/>
                 <div className={b('buttons-wrapper')}>
                     <button className={b('plus')} onClick={handleClickPlus}>▲</button>                
                     <button className={b('minus',{disabled})} onClick={handleClickMinus}>▼</button>

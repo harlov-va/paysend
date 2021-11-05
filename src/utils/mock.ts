@@ -12,7 +12,21 @@ export const mockConfig = {
 export const mockControls = [
     {
         id: 1,
+        name: 'h1',
+        value: 'Анкета',
+        label: 'Имя',
+        modelName: 'H1Component',
+        require: true,
+        style: {
+            '&.h1-component': {
+                marginBottom: '20px',
+            },
+        }
+    },
+    {
+        id: 2,
         name: 'input',
+        value: '',
         label: 'Имя',
         modelName: 'InputComponent',
         require: true,
@@ -26,8 +40,9 @@ export const mockControls = [
         }
     },
     {
-        id: 2,
+        id: 3,
         name: 'input',
+        value: 1,
         label: 'Возраст',
         modelName: 'InputNumber',
         require: true,
@@ -49,16 +64,14 @@ export const mockControls = [
         }
     },
     {
-        id: 3,
-        name: 'input',
-        label: 'Имя',
-        modelName: 'InputComponent',
+        id: 4,
+        name: 'select',
+        value: 'Не женат/не замужем',
+        label: 'Семейное положение',
+        modelName: 'SelectComponent',
         require: true,
         style: {
-            backgroundColor: 'white',
-            '& .input-component__input': {
-                border: '1px solid #dedede',
-            }
+           
         }
     },
 ]
